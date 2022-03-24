@@ -24,7 +24,7 @@ struct ContentView: View {
         }else if(from=="km"){
             centimetreValue = Double(value*1000)
         }else if(from=="ft"){
-            centimetreValue=Double(Double(value)*30.48)
+            centimetreValue=Double(Double(value)*3048)
         }else if(from=="yrd"){
             centimetreValue=Double(Double(value)*91.44)
         }else if(from=="mil"){
@@ -36,14 +36,14 @@ struct ContentView: View {
         }else if(to=="km"){
             valueOfReturn = (centimetreValue/1000)
         }else if(to=="ft"){
-            valueOfReturn = (Double(centimetreValue)/30.48)
+            valueOfReturn = (Double(centimetreValue)/3048)
         }else if(to=="yrd"){
             valueOfReturn = (Double(centimetreValue)/91.44)
         }else if(to=="mil"){
             valueOfReturn = (Double(centimetreValue/160934))
         }
         
-       
+        
     }
     
     var body: some View {
@@ -86,6 +86,7 @@ struct ContentView: View {
                         ForEach (typeConverted,id: \.self){ typeTo in
                             Text(typeTo).tag(typeTo)
                         }
+                        
                     }
                     .pickerStyle(.menu)
                     
@@ -97,6 +98,8 @@ struct ContentView: View {
                 Section{
                     
                     Text(valueOfReturn,format: .number)
+                    
+                    
                 }
             header:
                 {
